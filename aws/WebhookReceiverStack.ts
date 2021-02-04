@@ -24,17 +24,14 @@ export class WebhookReceiverStack extends CDK.Stack {
 		// This lambda will publish all requests made to the API Gateway in the queue
 		const lambda = new Lambda.Function(this, 'Lambda', {
 			description: 'Publishes webhook requests into SQS',
-			code: Lambda.Code.inline(
+			code: Lambda.Code.fromInline(
 				readFileSync(
 					path.resolve(process.cwd(), 'aws', 'lambda.js'),
 					'utf-8',
 				).toString(),
 			),
 			handler: 'index.handler',
-			// runtime: Lambda.Runtime.NODEJS_14_X, // FIXME: use once CDK has support. See https://github.com/aws/aws-cdk/pull/12861
-			runtime: new Lambda.Runtime('nodejs14.x', Lambda.RuntimeFamily.NODEJS, {
-				supportsInlineCode: true,
-			}),
+			runtime: Lambda.Runtime.NODEJS_12_X, // NODEJS_14_X does not support inline functions, yet. See https://github.com/aws/aws-cdk/pull/12861#discussion_r570038002
 			timeout: CDK.Duration.seconds(15),
 			initialPolicy: [
 				new IAM.PolicyStatement({
