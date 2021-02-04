@@ -58,7 +58,7 @@ export class CDStack extends CDK.Stack {
 			environment: {
 				type: 'LINUX_CONTAINER',
 				computeType: 'BUILD_GENERAL1_LARGE',
-				image: 'aws/codebuild/standard:2.0',
+				image: 'aws/codebuild/standard:5.0',
 			},
 		})
 		project.node.addDependency(codeBuildRole)
