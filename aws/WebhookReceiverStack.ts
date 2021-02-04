@@ -33,7 +33,7 @@ export class WebhookReceiverStack extends CDK.Stack {
 			handler: 'index.handler',
 			// runtime: Lambda.Runtime.NODEJS_14_X, // FIXME: use once CDK has support
 			runtime: new Lambda.Runtime('nodejs14.x', Lambda.RuntimeFamily.NODEJS, {
-				supportsInlineCode: true,
+				supportsInlineCode: false,
 			}),
 			timeout: CDK.Duration.seconds(15),
 			initialPolicy: [
