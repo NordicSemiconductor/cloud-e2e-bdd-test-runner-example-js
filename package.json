@@ -38,7 +38,7 @@
     "@aws-cdk/aws-sqs": "1.95.1",
     "@aws-cdk/aws-ssm": "1.95.1",
     "@aws-cdk/core": "1.95.1",
-    "@aws-sdk/client-cloudformation": "3.9.0",
+    "@aws-sdk/client-cloudformation": "3.10.0",
     "@commitlint/cli": "12.0.1",
     "@commitlint/config-angular": "12.0.1",
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "9.0.2",
