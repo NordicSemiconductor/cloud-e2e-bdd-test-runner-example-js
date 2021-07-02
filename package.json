@@ -48,7 +48,7 @@
     "@types/node": "15.12.2",
     "@typescript-eslint/eslint-plugin": "4.28.1",
     "aws-cdk": "1.111.0",
-    "eslint": "7.29.0",
+    "eslint": "7.30.0",
     "husky": "7.0.0",
     "lint-staged": "11.0.0",
     "pinst": "2.1.6",
