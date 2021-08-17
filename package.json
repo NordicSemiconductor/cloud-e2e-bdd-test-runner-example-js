@@ -79,6 +79,6 @@
   },
   "dependencies": {
     "@typescript-eslint/parser": "4.29.2",
-    "aws-sdk": "2.969.0"
+    "aws-sdk": "2.970.0"
   }
 }
