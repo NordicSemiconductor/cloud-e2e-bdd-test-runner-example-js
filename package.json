@@ -28,22 +28,22 @@
   },
   "homepage": "https://github.com/NordicSemiconductor/cloud-e2e-bdd-test-runner-example-js#readme",
   "devDependencies": {
-    "@aws-cdk/aws-apigateway": "1.129.0",
-    "@aws-cdk/aws-codebuild": "1.129.0",
-    "@aws-cdk/aws-codepipeline": "1.129.0",
-    "@aws-cdk/aws-iam": "1.129.0",
-    "@aws-cdk/aws-lambda": "1.129.0",
-    "@aws-cdk/aws-logs": "1.129.0",
-    "@aws-cdk/aws-s3": "1.129.0",
-    "@aws-cdk/aws-sqs": "1.129.0",
-    "@aws-cdk/aws-ssm": "1.129.0",
-    "@aws-cdk/core": "1.129.0",
+    "@aws-cdk/aws-apigateway": "1.130.0",
+    "@aws-cdk/aws-codebuild": "1.130.0",
+    "@aws-cdk/aws-codepipeline": "1.130.0",
+    "@aws-cdk/aws-iam": "1.130.0",
+    "@aws-cdk/aws-lambda": "1.130.0",
+    "@aws-cdk/aws-logs": "1.130.0",
+    "@aws-cdk/aws-s3": "1.130.0",
+    "@aws-cdk/aws-sqs": "1.130.0",
+    "@aws-cdk/aws-ssm": "1.130.0",
+    "@aws-cdk/core": "1.130.0",
     "@aws-sdk/client-cloudformation": "3.39.0",
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "9.2.8",
     "@nordicsemiconductor/cloudformation-helpers": "6.1.15",
     "@nordicsemiconductor/e2e-bdd-test-runner": "14.4.66",
     "@types/node": "16.11.6",
-    "aws-cdk": "1.129.0"
+    "aws-cdk": "1.130.0"
   },
   "lint-staged": {
     "*.ts": [
