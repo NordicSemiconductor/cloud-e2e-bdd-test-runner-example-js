@@ -43,7 +43,7 @@
     "@nordicsemiconductor/cloudformation-helpers": "6.1.25",
     "@nordicsemiconductor/e2e-bdd-test-runner": "14.4.110",
     "@types/node": "16.11.19",
-    "aws-cdk": "2.3.0"
+    "aws-cdk": "2.4.0"
   },
   "lint-staged": {
     "*.ts": [
