@@ -38,7 +38,7 @@
     "@aws-cdk/aws-sqs": "1.138.2",
     "@aws-cdk/aws-ssm": "1.138.2",
     "@aws-cdk/core": "1.138.2",
-    "@aws-sdk/client-cloudformation": "3.45.0",
+    "@aws-sdk/client-cloudformation": "3.46.0",
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.4",
     "@nordicsemiconductor/cloudformation-helpers": "7.0.0",
     "@nordicsemiconductor/e2e-bdd-test-runner": "15.0.2",
