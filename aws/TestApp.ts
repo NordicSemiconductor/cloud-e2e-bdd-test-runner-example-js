@@ -1,4 +1,4 @@
-import * as CDK from '@aws-cdk/core'
+import * as CDK from 'aws-cdk-lib'
 import { WebhookReceiverStack } from './WebhookReceiverStack'
 
 export class TestApp extends CDK.App {

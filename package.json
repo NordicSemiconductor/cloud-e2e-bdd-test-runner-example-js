@@ -27,22 +27,14 @@
   },
   "homepage": "https://github.com/NordicSemiconductor/cloud-e2e-bdd-test-runner-example-js#readme",
   "devDependencies": {
-    "@aws-cdk/aws-apigateway": "1.153.1",
-    "@aws-cdk/aws-codebuild": "1.153.1",
-    "@aws-cdk/aws-codepipeline": "1.153.1",
-    "@aws-cdk/aws-iam": "1.153.1",
-    "@aws-cdk/aws-lambda": "1.153.1",
-    "@aws-cdk/aws-logs": "1.153.1",
-    "@aws-cdk/aws-s3": "1.153.1",
-    "@aws-cdk/aws-sqs": "1.153.1",
-    "@aws-cdk/aws-ssm": "1.153.1",
-    "@aws-cdk/core": "1.153.1",
     "@aws-sdk/client-cloudformation": "3.82.0",
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.61",
     "@nordicsemiconductor/cloudformation-helpers": "7.0.6",
-    "@nordicsemiconductor/e2e-bdd-test-runner": "15.0.105",
-    "@types/node": "17.0.9",
-    "aws-cdk": "2.21.1"
+    "@nordicsemiconductor/e2e-bdd-test-runner": "15.0.106",
+    "@types/node": "17.0.31",
+    "aws-cdk-lib": "2.22.0",
+    "cdk": "2.22.0",
+    "constructs": "10.0.130"
   },
   "lint-staged": {
     "*.ts": [

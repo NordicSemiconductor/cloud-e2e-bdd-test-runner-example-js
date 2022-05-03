@@ -1,4 +1,4 @@
-import * as CDK from '@aws-cdk/core'
+import * as CDK from 'aws-cdk-lib'
 import { CDStack } from './CDStack'
 
 export class CDApp extends CDK.App {

@@ -1,9 +1,9 @@
-import * as CDK from '@aws-cdk/core'
-import * as IAM from '@aws-cdk/aws-iam'
-import * as CodeBuild from '@aws-cdk/aws-codebuild'
-import * as CodePipeline from '@aws-cdk/aws-codepipeline'
-import * as SSM from '@aws-cdk/aws-ssm'
-import * as S3 from '@aws-cdk/aws-s3'
+import * as CDK from 'aws-cdk-lib'
+import * as CodeBuild from 'aws-cdk-lib/aws-codebuild'
+import * as CodePipeline from 'aws-cdk-lib/aws-codepipeline'
+import * as IAM from 'aws-cdk-lib/aws-iam'
+import * as S3 from 'aws-cdk-lib/aws-s3'
+import * as SSM from 'aws-cdk-lib/aws-ssm'
 
 /**
  * This is the CloudFormation stack sets up the continuous deployment of the project.
