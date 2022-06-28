@@ -1,13 +1,13 @@
+import { CloudFormationClient } from '@aws-sdk/client-cloudformation'
+import { stackOutput } from '@nordicsemiconductor/cloudformation-helpers'
 import {
+	ConsoleReporter,
 	FeatureRunner,
 	restStepRunners,
 	webhookStepRunners,
-	ConsoleReporter,
 } from '@nordicsemiconductor/e2e-bdd-test-runner'
-import { stackOutput } from '@nordicsemiconductor/cloudformation-helpers'
-import { stackBaseName } from '../aws/stackBaseName'
 import * as path from 'path'
-import { CloudFormationClient } from '@aws-sdk/client-cloudformation'
+import { stackBaseName } from '../aws/stackBaseName'
 
 /**
  * This file configures the BDD Feature runner
