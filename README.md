@@ -9,7 +9,7 @@
 [![ESLint: TypeScript](https://img.shields.io/badge/ESLint-TypeScript-blue.svg)](https://github.com/typescript-eslint/typescript-eslint)
 
 Example use of
-[@nordicsemiconductor/e2e-bdd-test-runner](https://github.com/NordicSemiconductor/cloud-e2e-bdd-test-runner-js).
+[@nordicsemiconductor/bdd-markdown](https://www.npmjs.com/package/@nordicsemiconductor/bdd-markdown).
 
     npm ci           # install dependencies
     npx cdk deploy   # deploy the stack to your AWS account

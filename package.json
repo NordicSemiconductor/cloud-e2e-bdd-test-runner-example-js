@@ -1,10 +1,10 @@
 {
   "name": "@nordicsemiconductor/e2e-bdd-test-runner-example",
   "version": "0.0.0-development",
-  "description": "Example use of @nordicsemiconductor/e2e-bdd-test-runner",
-  "main": "index.js",
+  "description": "Example use of @nordicsemiconductor/bdd-markdown",
+  "type": "module",
   "scripts": {
-    "test": "node dist/feature-runner/run-features.js",
+    "test": "npx tsx features/run-features.ts",
     "prepare": "husky install"
   },
   "repository": {
@@ -15,24 +15,28 @@
     "bdd",
     "aws",
     "cloudnative",
-    "gherkin",
+    "e2e",
+    "bdd",
     "testing"
   ],
-  "author": "Markus Tacker <m@coderbyheart.com>",
-  "license": "MIT",
+  "author": "Nordic Semiconductor ASA | nordicsemi.no",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/NordicSemiconductor/cloud-e2e-bdd-test-runner-example-js/issues"
   },
   "homepage": "https://github.com/NordicSemiconductor/cloud-e2e-bdd-test-runner-example-js#readme",
   "devDependencies": {
-    "@aws-sdk/client-cloudformation": "3.137.0",
+    "@aws-sdk/client-cloudformation": "3.170.0",
+    "@aws-sdk/client-sqs": "3.170.0",
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.125",
+    "@nordicsemiconductor/bdd-markdown": "1.0.2",
     "@nordicsemiconductor/cloudformation-helpers": "7.0.6",
-    "@nordicsemiconductor/e2e-bdd-test-runner": "15.1.114",
-    "@types/node": "17.0.31",
-    "aws-cdk-lib": "2.33.0",
-    "cdk": "2.33.0",
-    "constructs": "10.1.105"
+    "@types/node": "18.7.17",
+    "aws-cdk-lib": "2.41.0",
+    "cdk": "2.41.0",
+    "constructs": "10.1.101",
+    "eslint-plugin-import": "2.26.0",
+    "tsx": "3.9.0"
   },
   "lint-staged": {
     "*.ts": [
@@ -59,6 +63,7 @@
     "npm": ">=8"
   },
   "dependencies": {
-    "aws-sdk": "2.1166.0"
-  }
+    "aws-sdk": "2.1215.0"
+  },
+  "prettier": "@nordicsemiconductor/asset-tracker-cloud-code-style/.prettierrc"
 }
