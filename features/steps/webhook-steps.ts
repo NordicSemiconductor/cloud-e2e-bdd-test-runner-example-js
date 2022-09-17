@@ -14,7 +14,7 @@ export const steps = (): StepRunner<World>[] => {
 	return [
 		async ({
 			step,
-			log,
+			log: { step: log },
 			context: { webhookQueue },
 		}: StepRunnerArgs<World>): Promise<StepRunResult> => {
 			if (!/^I have a Webhook Receiver$/.test(step.title)) return noMatch
@@ -25,7 +25,10 @@ export const steps = (): StepRunner<World>[] => {
 				matched: true,
 			}
 		},
-		async ({ step, log }: StepRunnerArgs<World>): Promise<StepRunResult> => {
+		async ({
+			step,
+			log: { scenario: log },
+		}: StepRunnerArgs<World>): Promise<StepRunResult> => {
 			const match =
 				/^the Webhook Receiver "(?<MessageGroupId>[^"]+)" should be called$/.exec(
 					step.title,
