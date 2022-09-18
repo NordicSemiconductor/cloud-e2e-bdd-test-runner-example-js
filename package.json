@@ -4,7 +4,7 @@
   "description": "Example use of @nordicsemiconductor/bdd-markdown",
   "type": "module",
   "scripts": {
-    "test": "npx tsx features/run-features.ts",
+    "test": "npx tsx features/run-features.ts | npx tsx features/console-reporter.ts",
     "prepare": "husky install"
   },
   "repository": {
@@ -29,13 +29,14 @@
     "@aws-sdk/client-cloudformation": "3.171.0",
     "@aws-sdk/client-sqs": "3.171.0",
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.125",
-    "@nordicsemiconductor/bdd-markdown": "2.3.0",
+    "@nordicsemiconductor/bdd-markdown": "2.5.0",
     "@nordicsemiconductor/cloudformation-helpers": "7.0.6",
     "@types/node": "18.7.18",
     "aws-cdk-lib": "2.42.0",
     "cdk": "2.42.0",
-    "constructs": "10.1.105",
+    "constructs": "10.1.106",
     "eslint-plugin-import": "2.26.0",
+    "node-fetch": "3.2.10",
     "tsx": "3.9.0"
   },
   "lint-staged": {

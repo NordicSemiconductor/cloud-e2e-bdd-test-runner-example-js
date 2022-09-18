@@ -1,9 +1,10 @@
 import { CloudFormationClient } from '@aws-sdk/client-cloudformation'
-import { consoleReporter, runFolder } from '@nordicsemiconductor/bdd-markdown'
+import { runFolder } from '@nordicsemiconductor/bdd-markdown'
 import { stackOutput } from '@nordicsemiconductor/cloudformation-helpers'
 import * as path from 'path'
 import { stackBaseName } from '../aws/stackBaseName.js'
-import { steps } from './steps/webhook-steps.js'
+import { steps as restSteps } from './steps/rest-steps.js'
+import { steps as webHookSteps } from './steps/webhook-steps.js'
 
 /**
  * This file configures the BDD Feature runner
@@ -22,15 +23,18 @@ export type World = {
 	webhookQueue: string
 }
 
-const runner = await runFolder<World>(path.join(process.cwd(), 'features'))
+const runner = await runFolder<World>({
+	folder: path.join(process.cwd(), 'features'),
+	name: 'Webhook Example',
+})
 
-runner.addStepRunners(...steps())
+runner.addStepRunners(...webHookSteps()).addStepRunners(...restSteps())
 
 const res = await runner.run({
 	webhookReceiver: config.ApiURL,
 	webhookQueue: config.QueueURL,
 })
 
-consoleReporter(res)
+console.log(JSON.stringify(res, null, 2))
 
 if (!res.ok) process.exit(1)

@@ -15,7 +15,7 @@ And the endpoint is `${webhookReceiver}`
 
 ## Verify that a webhook request was sent using the REST client
 
-When I POST to `/hook` with this JSON
+When I POST to `./hook` with this JSON
 
 ```json
 {
