@@ -29,6 +29,10 @@ jobs:
           path: ~/.npm
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
 
+      - name: Bootstrap AWS account for CDK
+        run: |
+          npx cdk bootstrap aws://`aws sts get-caller-identity | jq -r '.Account' | tr -d '\n'`/${{ secrets.AWS_REGION }}
+
       - name: Set up test resources
         run: npx cdk deploy --require-approval never
 
