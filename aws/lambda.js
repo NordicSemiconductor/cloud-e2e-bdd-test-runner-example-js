@@ -1,6 +1,7 @@
 const { SQS } = require('aws-sdk')
 const sqs = new SQS()
 exports.handler = (event) => {
+	console.debug(JSON.stringify({ event }))
 	const MessageAttributes = Object.keys(event.headers || {})
 		.filter((key) => !/^(CloudFront-|X-|Host|Via)/.test(key))
 		.slice(0, 10) // max number of MessageAttributes is 10
@@ -16,7 +17,7 @@ exports.handler = (event) => {
 			MessageBody: event.body,
 			MessageAttributes,
 			QueueUrl: process.env.SQS_QUEUE,
-			MessageGroupId: event.path.substr(1),
+			MessageGroupId: event.rawPath.substr(1),
 			MessageDeduplicationId: event.requestContext.requestId,
 		})
 		.promise()

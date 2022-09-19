@@ -15,7 +15,7 @@ export const steps = (): StepRunner<World>[] => {
 		async ({ step }: StepRunnerArgs<World>): Promise<StepRunResult> => {
 			const match = /^the endpoint is `(?<endpoint>[^`]+)`$/.exec(step.title)
 			if (match === null) return noMatch
-			baseUrl = new URL(match.groups?.endpoint)
+			baseUrl = new URL(match.groups?.endpoint ?? '')
 			return {
 				matched: true,
 			}
@@ -41,6 +41,10 @@ export const steps = (): StepRunner<World>[] => {
 				body: step.codeBlock.code,
 			})
 
+			progress(`${res.status} ${res.statusText}`)
+			progress(`x-amzn-requestid: ${res.headers.get('x-amzn-requestid')}`)
+			progress(`x-amzn-trace-id: ${res.headers.get('x-amzn-trace-id')}`)
+
 			return {
 				matched: true,
 			}
@@ -51,7 +55,7 @@ export const steps = (): StepRunner<World>[] => {
 			)
 			if (match === null) return noMatch
 
-			assert.equal(res?.status, parseInt(match.groups?.code, 10))
+			assert.equal(res?.status, parseInt(match.groups?.code ?? '-1', 10))
 
 			return {
 				matched: true,
