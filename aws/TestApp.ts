@@ -1,5 +1,5 @@
 import * as CDK from 'aws-cdk-lib'
-import { WebhookReceiverStack } from './WebhookReceiverStack'
+import { WebhookReceiverStack } from './WebhookReceiverStack.ts'
 
 export class TestApp extends CDK.App {
 	public constructor({ stackName }: { stackName: string }) {
