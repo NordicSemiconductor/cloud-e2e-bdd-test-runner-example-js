@@ -1,4 +1,5 @@
 import {
+	codeBlockOrThrow,
 	noMatch,
 	StepRunner,
 	StepRunnerArgs,
@@ -30,7 +31,7 @@ export const steps = (): StepRunner<World>[] => {
 			log: { scenario: log },
 		}: StepRunnerArgs<World>): Promise<StepRunResult> => {
 			const match =
-				/^the Webhook Receiver "(?<MessageGroupId>[^"]+)" should be called$/.exec(
+				/^the Webhook Receiver `(?<MessageGroupId>[^"]+)` should be called$/.exec(
 					step.title,
 				)
 			if (match === null) return noMatch
@@ -46,7 +47,10 @@ export const steps = (): StepRunner<World>[] => {
 			if (!/^the webhook request body should equal this JSON$/.test(step.title))
 				return noMatch
 
-			assert.deepEqual(step.codeBlock.code, r.latestWebhookRequest?.body)
+			assert.deepEqual(
+				JSON.parse(codeBlockOrThrow(step).code),
+				r.latestWebhookRequest?.body,
+			)
 
 			return { matched: true }
 		},

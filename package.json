@@ -29,7 +29,7 @@
     "@aws-sdk/client-cloudformation": "3.171.0",
     "@aws-sdk/client-sqs": "3.171.0",
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.125",
-    "@nordicsemiconductor/bdd-markdown": "2.5.0",
+    "@nordicsemiconductor/bdd-markdown": "2.6.0",
     "@nordicsemiconductor/cloudformation-helpers": "7.0.6",
     "@types/node": "18.7.18",
     "aws-cdk-lib": "2.42.0",
