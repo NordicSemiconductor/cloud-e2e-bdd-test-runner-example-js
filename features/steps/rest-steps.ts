@@ -1,4 +1,5 @@
 import {
+	codeBlockOrThrow,
 	noMatch,
 	StepRunner,
 	StepRunnerArgs,
@@ -16,9 +17,6 @@ export const steps = (): StepRunner<World>[] => {
 			const match = /^the endpoint is `(?<endpoint>[^`]+)`$/.exec(step.title)
 			if (match === null) return noMatch
 			baseUrl = new URL(match.groups?.endpoint ?? '')
-			return {
-				matched: true,
-			}
 		},
 		async ({
 			step,
@@ -34,20 +32,17 @@ export const steps = (): StepRunner<World>[] => {
 			const url = new URL(match.groups?.resource ?? '/', baseUrl).toString()
 			const method = match.groups?.method ?? 'GET'
 			progress(`${method} ${url}`)
-			progress(step.codeBlock.code)
+			const body = codeBlockOrThrow(step).code
+			progress(body)
 
 			res = await fetch(url, {
 				method,
-				body: step.codeBlock.code,
+				body: body,
 			})
 
 			progress(`${res.status} ${res.statusText}`)
 			progress(`x-amzn-requestid: ${res.headers.get('x-amzn-requestid')}`)
 			progress(`x-amzn-trace-id: ${res.headers.get('x-amzn-trace-id')}`)
-
-			return {
-				matched: true,
-			}
 		},
 		async ({ step }: StepRunnerArgs<World>): Promise<StepRunResult> => {
 			const match = /^the response status code should be (?<code>[0-9]+)$/.exec(
@@ -56,10 +51,6 @@ export const steps = (): StepRunner<World>[] => {
 			if (match === null) return noMatch
 
 			assert.equal(res?.status, parseInt(match.groups?.code ?? '-1', 10))
-
-			return {
-				matched: true,
-			}
 		},
 	]
 }

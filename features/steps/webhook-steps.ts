@@ -22,9 +22,6 @@ export const steps = (): StepRunner<World>[] => {
 			log.progress(`Webhook queue: ${webhookQueue}`)
 			r = new WebhookReceiver({ queueUrl: webhookQueue })
 			await r.clearQueue()
-			return {
-				matched: true,
-			}
 		},
 		async ({
 			step,
@@ -41,7 +38,7 @@ export const steps = (): StepRunner<World>[] => {
 				log,
 			)
 
-			return { matched: true, result: request.body }
+			return { result: request.body }
 		},
 		async ({ step }: StepRunnerArgs<World>): Promise<StepRunResult> => {
 			if (!/^the webhook request body should equal this JSON$/.test(step.title))
@@ -51,8 +48,6 @@ export const steps = (): StepRunner<World>[] => {
 				JSON.parse(codeBlockOrThrow(step).code),
 				r.latestWebhookRequest?.body,
 			)
-
-			return { matched: true }
 		},
 	]
 }
