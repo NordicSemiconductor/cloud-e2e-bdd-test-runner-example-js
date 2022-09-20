@@ -41,6 +41,7 @@ jobs:
           npx tsx features/run-features.ts > e2e-test-result.json
           cat e2e-test-result.json | npx tsx features/console-reporter.ts
           cat e2e-test-result.json | npx tsx features/markdown-reporter.ts >> $GITHUB_STEP_SUMMARY
+          cat e2e-test-result.json | npx tsx features/traceToMermaid.ts >> $GITHUB_STEP_SUMMARY
 
       - name: Semantic release
         if: success()

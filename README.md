@@ -41,7 +41,7 @@ manual step done through the AWS CLI:
 
 Then set up the continuous deployment:
 
-    npx cdk -a 'node dist/aws/cloudformation-cd.js' deploy
+    npx tsx cdk/cloudformation-cd.ts deploy
 
 ## Architecture decision records (ADRs)
 

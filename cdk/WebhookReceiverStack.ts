@@ -3,14 +3,24 @@ import * as IAM from 'aws-cdk-lib/aws-iam'
 import * as Lambda from 'aws-cdk-lib/aws-lambda'
 import * as Logs from 'aws-cdk-lib/aws-logs'
 import * as SQS from 'aws-cdk-lib/aws-sqs'
-import { readFileSync } from 'fs'
-import * as path from 'path'
+import { PackedLambda } from './packLambda.js'
+import { PackedLayer } from './packLayer.js'
 
 /**
  * This is the CloudFormation stack which contains the webhook receiver resources.
  */
 export class WebhookReceiverStack extends CDK.Stack {
-	public constructor(parent: CDK.App, id: string) {
+	public constructor(
+		parent: CDK.App,
+		id: string,
+		{
+			lambdaSource,
+			layer,
+		}: {
+			lambdaSource: PackedLambda
+			layer: PackedLayer
+		},
+	) {
 		super(parent, id)
 
 		const enableTracing = this.node.tryGetContext('isTest') === true
@@ -22,29 +32,20 @@ export class WebhookReceiverStack extends CDK.Stack {
 			queueName: `${id}.fifo`,
 		})
 
-		// Add X-Ray layer
-		const layers: Lambda.ILayerVersion[] = []
-		if (enableTracing)
-			layers.push(
-				Lambda.LayerVersion.fromLayerVersionArn(
-					this,
-					'X-RayLayer',
-					`arn:aws:lambda:${this.region}:901920570463:layer:aws-otel-nodejs-amd64-ver-1-6-0:1`,
-				),
-			)
+		const baseLayer = new Lambda.LayerVersion(this, 'baseLayer', {
+			code: Lambda.Code.fromAsset(layer.layerZipFile),
+			compatibleArchitectures: [Lambda.Architecture.ARM_64],
+			compatibleRuntimes: [Lambda.Runtime.NODEJS_16_X],
+		})
 
 		// This lambda will publish all requests made to the API Gateway in the queue
 		const lambda = new Lambda.Function(this, 'Lambda', {
 			description: 'Publishes webhook requests into SQS',
-			code: Lambda.Code.fromInline(
-				readFileSync(
-					path.resolve(process.cwd(), 'aws', 'lambda.js'),
-					'utf-8',
-				).toString(),
-			),
-			handler: 'index.handler',
+			code: Lambda.Code.fromAsset(lambdaSource.lambdaZipFile),
+			layers: [baseLayer],
+			handler: lambdaSource.handler,
 			runtime: Lambda.Runtime.NODEJS_16_X,
-			architecture: Lambda.Architecture.X86_64,
+			architecture: Lambda.Architecture.ARM_64,
 			timeout: CDK.Duration.seconds(15),
 			initialPolicy: [
 				new IAM.PolicyStatement({
@@ -62,9 +63,9 @@ export class WebhookReceiverStack extends CDK.Stack {
 			],
 			environment: {
 				SQS_QUEUE: queue.queueUrl,
+				ENABLE_TRACING: enableTracing ? '1' : '0',
 			},
 			tracing: enableTracing ? Lambda.Tracing.ACTIVE : Lambda.Tracing.DISABLED,
-			layers,
 		})
 
 		if (enableTracing)
@@ -78,7 +79,7 @@ export class WebhookReceiverStack extends CDK.Stack {
 		// Create the log group here, so we can control the retention
 		new Logs.LogGroup(this, `LambdaLogGroup`, {
 			removalPolicy: CDK.RemovalPolicy.DESTROY,
-			logGroupName: `/aws/lambda/${lambda.functionName}`,
+			logGroupName: `/cdk/lambda/${lambda.functionName}`,
 			retention: Logs.RetentionDays.ONE_DAY,
 		})
 

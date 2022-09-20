@@ -22,6 +22,7 @@ export const steps = (): StepRunner<World>[] => {
 			step,
 			log: {
 				step: { progress },
+				feature: { progress: featureProgress },
 			},
 		}: StepRunnerArgs<World>): Promise<StepRunResult> => {
 			const match =
@@ -41,8 +42,7 @@ export const steps = (): StepRunner<World>[] => {
 			})
 
 			progress(`${res.status} ${res.statusText}`)
-			progress(`x-amzn-requestid: ${res.headers.get('x-amzn-requestid')}`)
-			progress(`x-amzn-trace-id: ${res.headers.get('x-amzn-trace-id')}`)
+			featureProgress(`x-amzn-trace-id: ${res.headers.get('x-amzn-trace-id')}`)
 		},
 		async ({ step }: StepRunnerArgs<World>): Promise<StepRunResult> => {
 			const match = /^the response status code should be (?<code>[0-9]+)$/.exec(

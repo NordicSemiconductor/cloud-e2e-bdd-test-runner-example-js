@@ -28,16 +28,23 @@
   "devDependencies": {
     "@aws-sdk/client-cloudformation": "3.171.0",
     "@aws-sdk/client-sqs": "3.171.0",
+    "@aws-sdk/client-xray": "3.171.0",
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.126",
     "@nordicsemiconductor/bdd-markdown": "3.0.1",
     "@nordicsemiconductor/cloudformation-helpers": "7.0.6",
+    "@types/aws-lambda": "^8.10.104",
+    "@types/glob": "8.0.0",
     "@types/node": "18.7.18",
+    "@types/yazl": "2.4.2",
     "aws-cdk-lib": "2.42.1",
     "cdk": "2.42.1",
     "constructs": "10.1.107",
+    "dependency-tree": "8.1.2",
     "eslint-plugin-import": "2.26.0",
+    "glob": "8.0.3",
     "node-fetch": "3.2.10",
-    "tsx": "3.9.0"
+    "tsx": "3.9.0",
+    "yazl": "2.5.1"
   },
   "lint-staged": {
     "*.ts": [
@@ -63,8 +70,8 @@
     "node": ">=16",
     "npm": ">=8"
   },
+  "prettier": "@nordicsemiconductor/asset-tracker-cloud-code-style/.prettierrc",
   "dependencies": {
-    "aws-sdk": "2.1219.0"
-  },
-  "prettier": "@nordicsemiconductor/asset-tracker-cloud-code-style/.prettierrc"
+    "@aws-lambda-powertools/tracer": "1.2.1"
+  }
 }

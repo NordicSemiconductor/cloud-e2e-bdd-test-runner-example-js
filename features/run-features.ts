@@ -2,7 +2,7 @@ import { CloudFormationClient } from '@aws-sdk/client-cloudformation'
 import { runFolder } from '@nordicsemiconductor/bdd-markdown'
 import { stackOutput } from '@nordicsemiconductor/cloudformation-helpers'
 import * as path from 'path'
-import { stackBaseName } from '../aws/stackBaseName.js'
+import { stackBaseName } from '../cdk/stackBaseName.js'
 import { steps as restSteps } from './steps/rest-steps.js'
 import { steps as webHookSteps } from './steps/webhook-steps.js'
 
