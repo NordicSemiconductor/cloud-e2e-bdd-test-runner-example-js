@@ -32,7 +32,7 @@
     "@types/node": "18.11.17",
     "aws-cdk-lib": "2.33.0",
     "cdk": "2.33.0",
-    "constructs": "10.1.196"
+    "constructs": "10.1.197"
   },
   "lint-staged": {
     "*.ts": [
