@@ -29,7 +29,7 @@
     "@nordicsemiconductor/asset-tracker-cloud-code-style": "11.0.174",
     "@nordicsemiconductor/cloudformation-helpers": "7.0.7",
     "@nordicsemiconductor/e2e-bdd-test-runner": "15.1.229",
-    "@types/node": "18.11.19",
+    "@types/node": "18.13.0",
     "aws-cdk-lib": "2.33.0",
     "cdk": "2.33.0",
     "constructs": "10.1.242"
