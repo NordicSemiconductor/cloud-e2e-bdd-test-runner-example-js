@@ -18,8 +18,8 @@
     "gherkin",
     "testing"
   ],
-  "author": "Markus Tacker <m@coderbyheart.com>",
-  "license": "MIT",
+  "author": "Nordic Semiconductor ASA | nordicsemi.no",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/NordicSemiconductor/cloud-e2e-bdd-test-runner-example-js/issues"
   },
