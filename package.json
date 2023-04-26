@@ -26,7 +26,7 @@
   "homepage": "https://github.com/NordicSemiconductor/cloud-e2e-bdd-test-runner-example-js#readme",
   "devDependencies": {
     "@aws-sdk/client-cloudformation": "3.137.0",
-    "@nordicsemiconductor/asset-tracker-cloud-code-style": "12.0.26",
+    "@nordicsemiconductor/asset-tracker-cloud-code-style": "12.0.27",
     "@nordicsemiconductor/cloudformation-helpers": "8.0.0",
     "@nordicsemiconductor/e2e-bdd-test-runner": "16.0.53",
     "@types/node": "18.16.1",
