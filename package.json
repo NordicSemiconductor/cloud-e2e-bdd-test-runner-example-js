@@ -30,8 +30,8 @@
     "@nordicsemiconductor/cloudformation-helpers": "8.0.0",
     "@nordicsemiconductor/e2e-bdd-test-runner": "16.0.86",
     "@types/node": "18.16.15",
-    "aws-cdk-lib": "2.33.0",
-    "cdk": "2.33.0",
+    "aws-cdk-lib": "2.111.0",
+    "cdk": "2.111.0",
     "constructs": "10.2.33"
   },
   "lint-staged": {
