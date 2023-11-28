@@ -65,6 +65,6 @@
     "npm": ">=9"
   },
   "dependencies": {
-    "aws-sdk": "2.1166.0"
+    "aws-sdk": "2.1506.0"
   }
 }
